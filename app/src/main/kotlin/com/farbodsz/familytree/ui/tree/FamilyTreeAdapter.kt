@@ -46,17 +46,17 @@ class FamilyTreeAdapter(
         onItemClickAction = action
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
-        val itemView = LayoutInflater.from(parent!!.context)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val itemView = LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_list_person, parent, false)
         return ViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val treeItem = treeItems[position]
         val person = treeItem.data
 
-        with(holder!!) {
+        with(holder) {
             linearLayout.layoutParams = calculateItemLayoutParams(treeItem.depth)
             nameText.text = person.fullName
             infoText.text = person.dateOfBirth.format(DATE_FORMATTER_LONG)

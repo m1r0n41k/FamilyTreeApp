@@ -46,13 +46,13 @@ class EventAdapter(
         onItemClickAction = action
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent!!.context)
                 .inflate(R.layout.item_list_event, parent, false)
         return ViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val event = events[position]
         when (event) {
             is Anniversary -> setupAnniversaryLayout(holder!!, event)

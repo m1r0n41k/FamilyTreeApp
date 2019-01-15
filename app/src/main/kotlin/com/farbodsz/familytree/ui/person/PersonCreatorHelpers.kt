@@ -302,7 +302,7 @@ class PersonMarriageCreator(
      */
     fun addMarriage(marriage: Marriage) {
         marriages.add(marriage)
-        marriageRecyclerView.adapter.notifyDataSetChanged()
+        marriageRecyclerView.adapter?.notifyDataSetChanged()
     }
 
     /**
@@ -313,7 +313,7 @@ class PersonMarriageCreator(
      */
     private fun removeMarriage(marriage: Marriage) {
         marriages.remove(marriage)
-        marriageRecyclerView.adapter.notifyDataSetChanged()
+        marriageRecyclerView.adapter?.notifyDataSetChanged()
     }
 
     override fun writeData() = true // data will be written in instances of EditMarriageActivity
@@ -444,7 +444,7 @@ class PersonChildrenCreator(
      */
     fun addChild(child: Person) {
         children.add(child)
-        childrenRecyclerView.adapter.notifyDataSetChanged()
+        childrenRecyclerView.adapter?.notifyDataSetChanged()
         childrenText.text = context.resources.getQuantityString(
                 R.plurals.children_count_subtitle,
                 children.count(),
@@ -460,7 +460,7 @@ class PersonChildrenCreator(
      */
     private fun removeChild(child: Person) {
         children.remove(child)
-        childrenRecyclerView.adapter.notifyDataSetChanged()
+        childrenRecyclerView.adapter?.notifyDataSetChanged()
         childrenText.text = context.resources.getQuantityString(
                 R.plurals.children_count_subtitle,
                 children.count(),

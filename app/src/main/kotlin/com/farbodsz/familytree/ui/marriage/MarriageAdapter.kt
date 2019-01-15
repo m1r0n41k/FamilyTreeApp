@@ -44,18 +44,18 @@ class MarriageAdapter(
         onItemClickAction = action
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
-        val itemView = LayoutInflater.from(parent!!.context)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val itemView = LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_list_person, parent, false)
         return ViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val marriage = marriages[position]
         val spouseId = marriage.getOtherSpouseId(personId)
         val spouse = PersonManager(context).get(spouseId)
 
-        with(holder!!) {
+        with(holder) {
             nameText.text = spouse.fullName
             infoText.text = marriage.startDate.format(DATE_FORMATTER_LONG)
             personImageView.person = spouse

@@ -40,16 +40,16 @@ class PersonAdapter(
         onItemClickAction = action
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent!!.context)
                 .inflate(R.layout.item_list_person, parent, false)
         return ViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val person = people[position]
 
-        with(holder!!) {
+        with(holder) {
             nameText.text = person.fullName
             infoText.text = person.dateOfBirth.format(DATE_FORMATTER_LONG)
             personImageView.person = person

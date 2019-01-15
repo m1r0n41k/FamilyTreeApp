@@ -33,16 +33,16 @@ class HomeTileAdapter(
         private val tiles: List<HomeTile>
 ) : RecyclerView.Adapter<HomeTileAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
-        val itemView = LayoutInflater.from(parent!!.context)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val itemView = LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_home_tile, parent, false)
         return ViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val tile = tiles[position]
 
-        with(holder!!) {
+        with(holder) {
             titleText.text = tile.title
             descriptionText.text = tile.description
             cardView.setCardBackgroundColor(tile.color)

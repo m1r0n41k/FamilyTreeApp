@@ -270,7 +270,7 @@ class EditPersonActivity : AppCompatActivity() {
     private fun addMarriageToUi(marriage: Marriage) {
         hasModifiedMarriages = true
         marriages.add(marriage)
-        marriageRecyclerView.adapter.notifyDataSetChanged()
+        marriageRecyclerView.adapter?.notifyDataSetChanged()
     }
 
     /**
@@ -282,7 +282,7 @@ class EditPersonActivity : AppCompatActivity() {
     private fun deleteMarriageFromUi(marriage: Marriage) {
         hasModifiedMarriages = true
         marriages.remove(marriage)
-        marriageRecyclerView.adapter.notifyDataSetChanged()
+        marriageRecyclerView.adapter?.notifyDataSetChanged()
     }
 
     /**
@@ -324,7 +324,7 @@ class EditPersonActivity : AppCompatActivity() {
     private fun addChildToUi(child: Person) {
         hasModifiedChildren = true
         children.add(child)
-        childrenRecyclerView.adapter.notifyDataSetChanged()
+        childrenRecyclerView.adapter?.notifyDataSetChanged()
         childrenText.text = resources.getQuantityString(
                 R.plurals.children_count_subtitle,
                 children.count(),
@@ -341,7 +341,7 @@ class EditPersonActivity : AppCompatActivity() {
     private fun deleteChildFromUi(child: Person) {
         hasModifiedChildren = true
         children.remove(child)
-        childrenRecyclerView.adapter.notifyDataSetChanged()
+        childrenRecyclerView.adapter?.notifyDataSetChanged()
         childrenText.text = resources.getQuantityString(
                 R.plurals.children_count_subtitle,
                 children.count(),

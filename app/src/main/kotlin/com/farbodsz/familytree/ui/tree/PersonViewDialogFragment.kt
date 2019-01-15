@@ -110,7 +110,7 @@ class PersonViewDialogFragment : DialogFragment() {
      * The spouses of [person].
      * This is initialised lazily and cached to avoid processing data on each access.
      */
-    private val spouses by lazy { MarriagesManager(context).getSpouses(person.id) }
+    private val spouses by lazy { MarriagesManager(requireContext()).getSpouses(person.id) }
 
     /**
      * For providing a list of [people][Person] who's tree the user can choose to switch to and
@@ -133,7 +133,7 @@ class PersonViewDialogFragment : DialogFragment() {
                 ?: // received Person could be null, throw exception if so
                 throw IllegalArgumentException("this dialog cannot display a null person")
 
-        return AlertDialog.Builder(activity)
+        return AlertDialog.Builder(requireActivity())
                 .setCustomTitle(getTitleView())
                 .setItems(getDialogOptions()) { _, which ->
                     invokeDialogAction(which)
@@ -148,7 +148,7 @@ class PersonViewDialogFragment : DialogFragment() {
      * dialog.
      */
     private fun getTitleView(): View {
-        val titleView = activity.layoutInflater.inflate(R.layout.item_list_person, null)
+        val titleView = requireActivity().layoutInflater.inflate(R.layout.item_list_person, null)
 
         // TODO person image
         titleView.findViewById<TextView>(R.id.text1).text = person.fullName
@@ -156,7 +156,7 @@ class PersonViewDialogFragment : DialogFragment() {
         val subtitle = if (spouses.isEmpty()) {
             person.dateOfBirth.format(DATE_FORMATTER_LONG) // show DOB, if no spouses
         } else {
-            val aSpouse = PersonManager(context).get(spouses[0].id)
+            val aSpouse = PersonManager(requireContext()).get(spouses[0].id)
             resources.getQuantityString(
                     R.plurals.dialog_personView_marriages,
                     spouses.count(),
